@@ -26,7 +26,7 @@
 
 def palindrome?(str)
   str.downcase!
-  str.gsub(/[\A\W]/, '')
+  str.gsub!(/[\A\W]/, '')
   if (str.length % 2) == 0
   	arr = [str[0..(str.length-1)/2], str[((str.length-1)/2) + 1..-1]]
   	arr[1].reverse!
