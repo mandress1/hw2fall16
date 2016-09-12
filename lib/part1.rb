@@ -25,7 +25,17 @@
 #instructions specified in the assignment description to hand-in your work.
 
 def palindrome?(str)
-  # YOUR CODE HERE
+  str.downcase!
+  str.gsub(/[\A\W]/, '')
+  if (str.length % 2) == 0
+  	arr = [str[0..(str.length-1)/2], str[((str.length-1)/2) + 1..-1]]
+  	arr[1].reverse!
+  	return arr[0].eql?(arr[1])
+  else
+  	arr = [str[0..(str.length/2)-1], str[(str.length/2) + 1..-1]]
+  	arr[1].reverse!
+  	return arr[0].eql?(arr[1])
+  end
 end
 
 def count_words(str)
