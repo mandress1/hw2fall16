@@ -27,7 +27,6 @@ class JellyBean < Dessert
   end
   
   def delicious?
-    return false if @flavor == "black licorice"
-    super
+    return true unless @flavor == "black licorice"
   end
 end
