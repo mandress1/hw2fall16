@@ -41,33 +41,16 @@ def rps_game_winner(game)
 end
 
 def rps_tournament_winner(tournament)
-  finals = []
-  tournament.each do |el|
-    p el
-    puts "#{el[0][0]} string: #{el[0][0].is_a?(String)}| #{el[0]} array: #{el[0].is_a?(Array)}"
-    puts "\n"
-
-    exit() if (el[0][0].is_a?(String) and el[0].is_a?(Array))
-
-    if (el[0].is_a?(String) and el[1].is_a?(String))
-      puts el
-      return el
-    elsif (el[0][0].is_a?(String) and el[0].is_a?(Array))
-      puts "V: #{el}"
-      winner = rps_game_winner(el)
-      puts "Win #{winner}"
-      return winner
-    else
-      puts "el0: #{el[0]}\n el1: #{el[1]}"
-      puts "\n"
-      down1 = rps_tournament_winner(el[0])
-      down2 = rps_tournament_winner(el[1])
-
-      finals.push(rps_tournament_winner([down1, down2]))
-    end
+  top = []
+  bot = []
+  if (tournament[0][0].is_a?(String))
+    return rps_game_winner(tournament)
+  else
+    top = rps_tournament_winner(tournament[0])
+    bot = rps_tournament_winner(tournament[1])
   end
-  puts "#{finals}"
-  return rps_game_winner(finals)
+
+  return rps_game_winner([top, bot])
 end
 
 #feel free to add your own helper functions as needed
