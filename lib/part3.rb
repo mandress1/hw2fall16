@@ -1,5 +1,8 @@
 class Dessert
 
+  attr_accessor :name
+  attr_accessor :calories
+
   def initialize(name, calories)
     @name = name
     @calories = calories
@@ -15,16 +18,16 @@ class Dessert
 end
 
 class JellyBean < Dessert
+
+  attr_accessor :flavor
+
   def initialize(name, calories, flavor)
     super(name, calories)
     @flavor = flavor
   end
-
-  def prnt
-    puts "name: #{@name}, cal: #{@calories}, flav: #{@flavor}"
-  end
   
   def delicious?
-    # YOUR CODE HERE
+    return false if @flavor == "black licorice"
+    super
   end
 end
