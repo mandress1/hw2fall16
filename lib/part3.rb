@@ -4,14 +4,12 @@ class Dessert
   attr_accessor :calories
 
   def initialize(name, calories)
-    raise ArgumentError, "Error: name needs to be a string" unless name.is_a?(String)
-    raise ArgumentError, "Error: calories needs to be a number" unless calories.is_a?(Numeric)
     @name = name
     @calories = calories
   end
   
   def healthy?
-    calories < 200
+    @calories < 200
   end
   
   def delicious?
@@ -25,11 +23,14 @@ class JellyBean < Dessert
 
   def initialize(name, calories, flavor)
     super(name, calories)
-    raise ArgumentError, "Error: flavor needs to be a string" unless flavor.is_a?(String)
-    @flavor = flavor
+    @flavor = flavor.downcase if flavor.is_a?(String) else flavor
+  end
+
+  def healthy?
+    super
   end
   
   def delicious?
-    return true unless @flavor == "black licorice"
+    return super unless @flavor == "black licorice" else return false
   end
 end
